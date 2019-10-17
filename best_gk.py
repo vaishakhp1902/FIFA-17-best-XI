@@ -46,3 +46,29 @@ sd1 = df.sort_values('gk_Shot_Stopper', ascending=False)[:5]
 x1 = np.array(list(sd1['Name']))
 y1 = np.array(list(sd1['gk_Shot_Stopper']))
 sns.barplot(x1,y1,palette="colorblind")
+
+
+
+#choosing defenders
+
+df['df_center_backs'] = (d*df.Reactions + c*df.Interceptions + d*df.Sliding_Tackle + d*df.Standing_Tackle + b*df.Vision + b*df.Composure + b*df.Crossing + a*df.Short_Pass + c*df.Long_Pass +c*df.Acceleration + b*df.Speed + d*df.Stamina + d*df.Jumping + d*df.Heading + b*df.Long_Shots + d*df.Marking + c*df.Aggression)/(6*b + 3*c + 7*d)
+df['df_wb_Wing_Backs'] = (b*df.Ball_Control + a*df.Dribbling + a*df.Marking + d*df.Sliding_Tackle + d*df.Standing_Tackle + a*df.Attacking_Position + c*df.Vision + c*df.Crossing + b*df.Short_Pass + c*df.Long_Pass + d*df.Acceleration + d*df.Speed + c*df.Stamina + a*df.Finishing)/(4*a + 2*b +4*c)
+
+#plot let center back
+plt.figure(figsize=(15,6))
+#Generating sequential data and plot
+sd=df[(df['Club_Position']=='LCB')].sort_values('df_center_backs',ascending=False)[:5]
+x2=np.array(list(sd['Name']))
+y2=np.array(list(sd['df_center_backs']))
+sns.barplot(x2,y2,palette=sns.color_palette("Blues_d"))
+plt.ylabel("LCB Score")
+
+
+#plot Right center back
+plt.figure(figsize=(15,6))
+#Generating sequential data and plot
+sd=df[(df['Club_Position']=='RCB')].sort_values('df_center_backs',ascending=False)[:5]
+x2=np.array(list(sd['Name']))
+y2=np.array(list(sd['df_center_backs']))
+sns.barplot(x2,y2,palette=sns.color_palette("Blues_d"))
+plt.ylabel("RCB Score")
