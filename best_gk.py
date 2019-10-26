@@ -72,3 +72,26 @@ x2=np.array(list(sd['Name']))
 y2=np.array(list(sd['df_center_backs']))
 sns.barplot(x2,y2,palette=sns.color_palette("Blues_d"))
 plt.ylabel("RCB Score")
+
+
+
+
+
+#plot lwb
+plt.figure(figsize=(15,6))
+sd=df[(df['Club_Position'] =='LWB') | (df['Club_Position'] =='LB') ].sort_values('df_wb_Wing_Backs',ascending=False)[:5]
+x4=np.array(list(sd['Name']))
+y4=np.array(list(sd['df_wb_Wing_Backs']))
+sns.barplot(x4,y4,palette=sns.color_palette("Blues_d"))
+plt.ylabel("Left Back Score")
+
+
+
+
+#plot lwb
+plt.figure(figsize=(15,6))
+sd=df[(df['Club_Position'] =='RWB') | (df['Club_Position'] =='RB') ].sort_values('df_wb_Wing_Backs',ascending=False)[:5]
+x5=np.array(list(sd['Name']))
+y5=np.array(list(sd['df_wb_Wing_Backs']))
+sns.barplot(x5,y5,palette=sns.color_palette("Blues_d"))
+plt.ylabel("Right Back Score")
